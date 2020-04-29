@@ -13,7 +13,7 @@ function PromptModal(props) {
     >
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
-        <h5 style={{ fontWeight: "bold" }}>Centered Modal</h5>
+        <Prompt />
       </Modal.Body>
       <Modal.Footer>
         <Button variant="info" onClick={props.onHide}>

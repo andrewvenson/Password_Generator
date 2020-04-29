@@ -10,8 +10,8 @@ const Prompt = (props) => {
   ];
   return (
     <div>
-      <p>{props.prompt}</p>
-      <input type={props.type} placeholder={props.placeholder} />
+      <h6 style={{ fontWeight: "bold" }}>{prompts[0]}</h6>
+      <input type="text" placeholder="test" />
     </div>
   );
 };
