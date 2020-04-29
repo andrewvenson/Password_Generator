@@ -4,6 +4,7 @@ import { Container, Button } from "react-bootstrap";
 import PromptModal from "./Components/PromptModal";
 const App = () => {
   const [state, setState] = useState({
+    length: 0,
     generatedPW:
       "No password generated yet... click button to generate password",
     specialCharacters: false,
@@ -55,7 +56,12 @@ const App = () => {
           Generate Password
         </Button>
       </div>
-      <PromptModal show={modalShow} onHide={() => setModalShow(false)} />
+      <PromptModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        promptstate={state}
+        setpromptstate={setState}
+      />
     </Container>
   );
 };

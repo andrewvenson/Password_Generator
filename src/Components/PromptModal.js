@@ -12,10 +12,13 @@ const PromptModal = (props) => {
     >
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
-        <Prompt promptcount={props.promptindex} />
+        <Prompt
+          promptstate={props.promptstate}
+          setpromptstate={props.setpromptstate}
+        />
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="info" onClick={() => console.log("rethink")}>
+        <Button variant="info" onClick={() => console.log(props.promptstate)}>
           Next
         </Button>
       </Modal.Footer>
