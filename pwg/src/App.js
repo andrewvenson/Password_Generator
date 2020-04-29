@@ -1,7 +1,28 @@
 import React, { useState } from "react";
 import "./App.css";
 import Prompt from "./Components/Prompt";
-import { Container } from "react-bootstrap";
+import { Container, Button, Modal } from "react-bootstrap";
+
+function PromptModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton></Modal.Header>
+      <Modal.Body>
+        <h5 style={{ fontWeight: "bold" }}>Centered Modal</h5>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="info" onClick={props.onHide}>
+          Next
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
 
 function App() {
   // truth/falsy states
@@ -19,6 +40,9 @@ function App() {
     "No password generated yet... click button to generate password"
   );
 
+  // state for modal
+  const [modalShow, setModalShow] = React.useState(false);
+
   return (
     <Container
       style={{
@@ -35,6 +59,7 @@ function App() {
           padding: "20px",
           borderRadius: "10px",
           boxShadow: "4px 8px 16px lightgray",
+          position: "relative",
         }}
       >
         <p style={{ fontWeight: "bold" }}>Password Generator</p>
@@ -48,7 +73,17 @@ function App() {
         >
           <p style={{ color: "whitesmoke" }}>{generatedPW}</p>
         </div>
+        <Button
+          style={{ position: "absolute", right: "5px", bottom: "5px" }}
+          variant="info"
+          onClick={() => setModalShow(true)}
+        >
+          Generate Password
+        </Button>
       </div>
+
+      {/* prompt modal */}
+      <PromptModal show={modalShow} onHide={() => setModalShow(false)} />
     </Container>
   );
 }
