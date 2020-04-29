@@ -41,13 +41,6 @@ const App = () => {
   // sets pw length from prompt input
   const setPwLengthState = (pwlength) => {
     setPwLength(pwlength);
-    console.log("pwlength", pwlength);
-  };
-
-  // increments promptCount state by 1
-  const setPromptCountState = () => {
-    setPromptCount(promptCount + 1);
-    console.log(promptCount);
   };
 
   // set promptcount state to zero
@@ -59,11 +52,6 @@ const App = () => {
   const [generatedPw, setGenPw] = useState(
     "No password generated yet... click button to generate password"
   );
-
-  // new generated password
-  const setGenPwState = () => {
-    console.log(generatedPw);
-  };
 
   // state for modal
   const [modalShow, setModalShow] = React.useState(false);
@@ -112,7 +100,6 @@ const App = () => {
 
       {/* prompt modal */}
       <PromptModal
-        nextcount={setPromptCountState}
         promptindex={promptCount}
         show={modalShow}
         // prompt count changes set state function being used to change the specific state
