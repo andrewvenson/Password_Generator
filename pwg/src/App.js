@@ -13,10 +13,10 @@ function PromptModal(props) {
     >
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
-        <Prompt />
+        <Prompt promptcount={props.promptindex} />
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="info" onClick={props.onHide}>
+        <Button variant="info" onClick={props.nextcount}>
           Next
         </Button>
       </Modal.Footer>
@@ -34,6 +34,12 @@ function App() {
   // numeric states
   const [pwLength, setPwLength] = useState(0);
   const [promptCount, setPromptCount] = useState(0);
+
+  // increments promptCount state by 1
+  const setPromptCountState = () => {
+    setPromptCount(promptCount + 1);
+    console.log(promptCount);
+  };
 
   // string states
   const [generatedPW, setGenPw] = useState(
@@ -83,7 +89,12 @@ function App() {
       </div>
 
       {/* prompt modal */}
-      <PromptModal show={modalShow} onHide={() => setModalShow(false)} />
+      <PromptModal
+        nextcount={setPromptCountState}
+        promptindex={promptCount}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </Container>
   );
 }
