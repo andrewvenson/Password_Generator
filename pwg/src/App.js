@@ -3,7 +3,8 @@ import "./App.css";
 import Prompt from "./Components/Prompt";
 import { Container, Button, Modal } from "react-bootstrap";
 
-function PromptModal(props) {
+//
+const PromptModal = (props) => {
   return (
     <Modal
       {...props}
@@ -16,15 +17,15 @@ function PromptModal(props) {
         <Prompt promptcount={props.promptindex} />
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="info" onClick={props.nextcount}>
+        <Button variant="info" onClick={() => props.nextcount()}>
           Next
         </Button>
       </Modal.Footer>
     </Modal>
   );
-}
+};
 
-function App() {
+const App = () => {
   // truth/falsy states
   const [lowerCase, setLowercase] = useState(false);
   const [upperCase, setUppercase] = useState(false);
@@ -97,6 +98,6 @@ function App() {
       />
     </Container>
   );
-}
+};
 
 export default App;

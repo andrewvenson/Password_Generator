@@ -8,10 +8,11 @@ const Prompt = (props) => {
     "Use numeric characters:",
     "Use special characters:",
   ];
+
   return (
     <div>
-      <h6 style={{ fontWeight: "bold" }}>{prompts[0]}</h6>
-      <input type="text" placeholder="test" />
+      <h6 style={{ fontWeight: "bold" }}>{prompts[props.promptcount]}</h6>
+      <input type={props.promptcount == 0 ? "number" : "checkbox"} />
     </div>
   );
 };
