@@ -26,15 +26,40 @@ const PromptModal = (props) => {
 };
 
 const App = () => {
-  // truth/falsy states
+  // truthy/falsy states
   const [lowerCase, setLowercase] = useState(false);
   const [upperCase, setUppercase] = useState(false);
   const [numeric, setNumeric] = useState(false);
   const [specialChars, setSpecialChars] = useState(false);
 
+  const setLowercaseState = (lcval) => {
+    setLowercase(lcval);
+    console.log(lcval);
+  };
+
+  const setUppercaseState = (ucval) => {
+    setUppercase(ucval);
+    console.log(ucval);
+  };
+
+  const setNumericState = (numval) => {
+    setNumeric(numval);
+    console.log(numval);
+  };
+
+  const setSpecialCharsState = (charsval) => {
+    setSpecialChars(charsval);
+    console.log(charsval);
+  };
+
   // numeric states
   const [pwLength, setPwLength] = useState(0);
   const [promptCount, setPromptCount] = useState(0);
+
+  const setPwLengthState = (pwlength) => {
+    setPwLength(pwlength);
+    console.log(pwlength);
+  };
 
   // increments promptCount state by 1
   const setPromptCountState = () => {
@@ -48,9 +73,13 @@ const App = () => {
   };
 
   // string states
-  const [generatedPW, setGenPw] = useState(
+  const [generatedPw, setGenPw] = useState(
     "No password generated yet... click button to generate password"
   );
+
+  const setGenPwState = () => {
+    console.log(generatedPw);
+  };
 
   // state for modal
   const [modalShow, setModalShow] = React.useState(false);
@@ -83,7 +112,7 @@ const App = () => {
             borderRadius: "4px",
           }}
         >
-          <p style={{ color: "whitesmoke" }}>{generatedPW}</p>
+          <p style={{ color: "whitesmoke" }}>{generatedPw}</p>
         </div>
         <Button
           style={{ position: "absolute", right: "5px", bottom: "5px" }}
