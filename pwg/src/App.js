@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Prompt from "./Components/Prompt";
+import { Container } from "react-bootstrap";
 
 function App() {
   // truth/falsy states
