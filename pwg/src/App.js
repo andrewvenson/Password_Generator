@@ -140,7 +140,7 @@ const App = () => {
         nextcount={setPromptCountState}
         promptindex={promptCount}
         show={modalShow}
-        // prompt count changes changes function being used to change the specific state
+        // prompt count changes set state function being used to change the specific state
         promptfuncs={
           promptCount === 0
             ? setPwLengthState
