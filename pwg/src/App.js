@@ -1,32 +1,7 @@
 import React, { useState } from "react";
+import { Container, Button } from "react-bootstrap";
 import "./App.css";
-import Prompt from "./Components/Prompt";
-import { Container, Button, Modal } from "react-bootstrap";
-
-//
-const PromptModal = (props) => {
-  return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton></Modal.Header>
-      <Modal.Body>
-        <Prompt
-          promptcount={props.promptindex}
-          promptfunc={props.promptfuncs}
-        />
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="info" onClick={() => props.nextcount()}>
-          Next
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  );
-};
+import PromptModal from "./Components/PromptModal";
 
 const App = () => {
   // truthy/falsy states
