@@ -14,7 +14,10 @@ const PromptModal = (props) => {
     >
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
-        <Prompt promptcount={props.promptindex} />
+        <Prompt
+          promptcount={props.promptindex}
+          promptfunc={props.promptfuncs}
+        />
       </Modal.Body>
       <Modal.Footer>
         <Button variant="info" onClick={() => props.nextcount()}>
@@ -32,21 +35,25 @@ const App = () => {
   const [numeric, setNumeric] = useState(false);
   const [specialChars, setSpecialChars] = useState(false);
 
+  // sets lc val from prompt input
   const setLowercaseState = (lcval) => {
     setLowercase(lcval);
     console.log(lcval);
   };
 
+  // sets uc val from prompt input
   const setUppercaseState = (ucval) => {
     setUppercase(ucval);
     console.log(ucval);
   };
 
+  // sets numeric bool from prompt input
   const setNumericState = (numval) => {
     setNumeric(numval);
     console.log(numval);
   };
 
+  // sets spec char bool from prompt input
   const setSpecialCharsState = (charsval) => {
     setSpecialChars(charsval);
     console.log(charsval);
@@ -56,6 +63,7 @@ const App = () => {
   const [pwLength, setPwLength] = useState(0);
   const [promptCount, setPromptCount] = useState(0);
 
+  // sets pw length from prompt input
   const setPwLengthState = (pwlength) => {
     setPwLength(pwlength);
     console.log(pwlength);
@@ -77,6 +85,7 @@ const App = () => {
     "No password generated yet... click button to generate password"
   );
 
+  // new generated password
   const setGenPwState = () => {
     console.log(generatedPw);
   };
@@ -131,6 +140,19 @@ const App = () => {
         nextcount={setPromptCountState}
         promptindex={promptCount}
         show={modalShow}
+        promptfuncs={
+          promptCount == 0
+            ? setNumericState
+            : promptCount == 1
+            ? setLowercaseState
+            : promptCount == 2
+            ? setUppercaseState
+            : promptCount == 3
+            ? setNumericState
+            : promptCount == 4
+            ? setSpecialCharsState
+            : "nada"
+        }
         onHide={() => setModalShow(false)}
       />
     </Container>
