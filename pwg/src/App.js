@@ -42,6 +42,11 @@ const App = () => {
     console.log(promptCount);
   };
 
+  // set promptcount state to zero
+  const setPromptZero = () => {
+    setPromptCount(0);
+  };
+
   // string states
   const [generatedPW, setGenPw] = useState(
     "No password generated yet... click button to generate password"
@@ -83,7 +88,10 @@ const App = () => {
         <Button
           style={{ position: "absolute", right: "5px", bottom: "5px" }}
           variant="info"
-          onClick={() => setModalShow(true)}
+          onClick={() => {
+            setModalShow(true);
+            setPromptZero();
+          }}
         >
           Generate Password
         </Button>
