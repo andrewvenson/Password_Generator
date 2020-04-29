@@ -38,25 +38,25 @@ const App = () => {
   // sets lc val from prompt input
   const setLowercaseState = (lcval) => {
     setLowercase(lcval);
-    console.log(lcval);
+    console.log("lcval", lcval);
   };
 
   // sets uc val from prompt input
   const setUppercaseState = (ucval) => {
     setUppercase(ucval);
-    console.log(ucval);
+    console.log("ucval", ucval);
   };
 
   // sets numeric bool from prompt input
   const setNumericState = (numval) => {
     setNumeric(numval);
-    console.log(numval);
+    console.log("numval", numval);
   };
 
   // sets spec char bool from prompt input
   const setSpecialCharsState = (charsval) => {
     setSpecialChars(charsval);
-    console.log(charsval);
+    console.log("charsval", charsval);
   };
 
   // numeric states
@@ -66,7 +66,7 @@ const App = () => {
   // sets pw length from prompt input
   const setPwLengthState = (pwlength) => {
     setPwLength(pwlength);
-    console.log(pwlength);
+    console.log("pwlength", pwlength);
   };
 
   // increments promptCount state by 1
@@ -140,16 +140,17 @@ const App = () => {
         nextcount={setPromptCountState}
         promptindex={promptCount}
         show={modalShow}
+        // prompt count changes changes function being used to change the specific state
         promptfuncs={
-          promptCount == 0
-            ? setNumericState
-            : promptCount == 1
+          promptCount === 0
+            ? setPwLengthState
+            : promptCount === 1
             ? setLowercaseState
-            : promptCount == 2
+            : promptCount === 2
             ? setUppercaseState
-            : promptCount == 3
+            : promptCount === 3
             ? setNumericState
-            : promptCount == 4
+            : promptCount === 4
             ? setSpecialCharsState
             : "nada"
         }
