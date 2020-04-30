@@ -32,6 +32,7 @@ const Prompt = (props) => {
 
   return (
     <div>
+      {/* validation messages display if criteria not met on generate click */}
       <p>{props.lenValidation}</p>
       <p>{props.charValidation}</p>
 
