@@ -160,6 +160,8 @@ const PromptModal = (props) => {
         ...props.promptstate,
         ["generatedPw"]: passArray.join(""),
       });
+
+      props.onHide();
     }
   };
 
