@@ -41,11 +41,15 @@ const Prompt = (props) => {
           <input
             type={prompt.type}
             onChange={(e) => {
-              props.setpromptstate({
-                ...props.promptstate,
-                [prompt.prompt]: !props.promptstate[prompt.prompt],
-              });
-              // console.log(props.promptstate);
+              typeof e.target.value === "string"
+                ? props.setpromptstate({
+                    ...props.promptstate,
+                    [prompt.prompt]: parseInt(e.target.value),
+                  })
+                : props.setpromptstate({
+                    ...props.promptstate,
+                    [prompt.prompt]: !props.promptstate[prompt.prompt],
+                  });
             }}
           />
         </React.Fragment>
