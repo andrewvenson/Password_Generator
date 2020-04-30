@@ -11,9 +11,8 @@ const PromptModal = (props) => {
 
   let pwLength = props.promptstate["length"];
 
-  var passArray = [];
-
   const promptValidation = () => {
+    console.log("hallelluha");
     // if both password length AND character type don't meet criteria
     if (
       (props.promptstate["length"] < 8 ||
@@ -26,9 +25,8 @@ const PromptModal = (props) => {
     ) {
       setValidationState({
         ...validation,
-        ["lengthValidation"]:
-          "Password length must be between 8-128 characters...",
-        ["characterValidation"]:
+        lengthValidation: "Password length must be between 8-128 characters...",
+        characterValidation:
           "At least one character type should be selected...",
       });
     }
@@ -44,9 +42,8 @@ const PromptModal = (props) => {
     ) {
       setValidationState({
         ...validation,
-        ["lengthValidation"]:
-          "Password length must be between 8-128 characters...",
-        ["characterValidation"]: "",
+        lengthValidation: "Password length must be between 8-128 characters...",
+        characterValidation: "",
       });
     }
     // if password length does meet criteria and character type does NOT meet criteria
@@ -61,8 +58,8 @@ const PromptModal = (props) => {
     ) {
       setValidationState({
         ...validation,
-        ["lengthValidation"]: "",
-        ["characterValidation"]:
+        lengthValidation: "",
+        characterValidation:
           "At least one character type should be selected...",
       });
     }
@@ -70,8 +67,8 @@ const PromptModal = (props) => {
     else {
       setValidationState({
         ...validation,
-        ["lengthValidation"]: "",
-        ["characterValidation"]: "",
+        lengthValidation: "",
+        characterValidation: "",
       });
 
       const caseCharacters = [
@@ -101,6 +98,35 @@ const PromptModal = (props) => {
         "x",
         "y",
         "z",
+      ];
+
+      const upperCharacters = [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
       ];
 
       const specialCharacters = [
@@ -137,29 +163,178 @@ const PromptModal = (props) => {
         "?",
       ];
 
-      for (var x = 0; x <= pwLength; x++) {
-        if (props.promptstate["lowerCase"]) {
-          passArray.push(caseCharacters[Math.floor(Math.random() * 26)]);
+      var numbers = [];
+      var passArray = [];
+
+      for (var numba = 0; numba < 10; numba++) {
+        numbers.push(numba.toString());
+      }
+
+      for (var iter = 0; iter <= pwLength; iter++) {
+        if (
+          props.promptstate["lowerCase"] &&
+          props.promptstate["upperCase"] &&
+          props.promptstate["numbers"] &&
+          props.promptstate["specialCharacters"]
+        ) {
+          let newArray = [
+            ...caseCharacters,
+            ...upperCharacters,
+            ...specialCharacters,
+            ...numbers,
+          ];
+          passArray.push(newArray[Math.floor(Math.random() * newArray.length)]);
         }
 
-        if (props.promptstate["upperCase"]) {
-          let uc = caseCharacters[Math.floor(Math.random() * 26)];
-          passArray.push(uc.toUpperCase());
+        if (
+          props.promptstate["lowerCase"] &&
+          props.promptstate["upperCase"] &&
+          props.promptstate["specialCharacters"] &&
+          !props.promptstate["numbers"]
+        ) {
+          let newArray = [
+            ...caseCharacters,
+            ...upperCharacters,
+            ...specialCharacters,
+          ];
+          passArray.push(newArray[Math.floor(Math.random() * newArray.length)]);
         }
 
-        if (props.promptstate["numbers"]) {
-          passArray.push(Math.floor(Math.random() * 99));
+        if (
+          props.promptstate["lowerCase"] &&
+          props.promptstate["upperCase"] &&
+          props.promptstate["numbers"] &&
+          !props.promptstate["specialCharacters"]
+        ) {
+          let newArray = [...caseCharacters, ...upperCharacters, ...numbers];
+          passArray.push(newArray[Math.floor(Math.random() * newArray.length)]);
         }
 
-        if (props.promptstate["specialCharacters"]) {
-          passArray.push(specialCharacters[Math.floor(Math.random() * 31)]);
+        if (
+          props.promptstate["upperCase"] &&
+          props.promptstate["numbers"] &&
+          props.promptstate["specialCharacters"] &&
+          !props.promptstate["lowerCase"]
+        ) {
+          let newArray = [...numbers, ...upperCharacters, ...specialCharacters];
+          passArray.push(newArray[Math.floor(Math.random() * newArray.length)]);
+        }
+
+        if (
+          props.promptstate["lowerCase"] &&
+          props.promptstate["numbers"] &&
+          props.promptstate["specialCharacters"] &&
+          !props.promptstate["upperCase"]
+        ) {
+          let newArray = [...caseCharacters, ...numbers, ...specialCharacters];
+          passArray.push(newArray[Math.floor(Math.random() * newArray.length)]);
+        }
+
+        if (
+          props.promptstate["lowerCase"] &&
+          props.promptstate["numbers"] &&
+          !props.promptstate["specialCharacters"] &&
+          !props.promptstate["upperCase"]
+        ) {
+          let newArray = [...caseCharacters, ...numbers];
+          passArray.push(newArray[Math.floor(Math.random() * newArray.length)]);
+        }
+
+        if (
+          props.promptstate["numbers"] &&
+          props.promptstate["specialCharacters"] &&
+          !props.promptstate["lowerCase"] &&
+          !props.promptstate["upperCase"]
+        ) {
+          let newArray = [...numbers, ...specialCharacters];
+          passArray.push(newArray[Math.floor(Math.random() * newArray.length)]);
+        }
+
+        if (
+          props.promptstate["numbers"] &&
+          props.promptstate["upperCase"] &&
+          !props.promptstate["lowerCase"] &&
+          !props.promptstate["specialCharacters"]
+        ) {
+          let newArray = [...upperCharacters, ...numbers];
+          passArray.push(newArray[Math.floor(Math.random() * newArray.length)]);
+        }
+
+        if (
+          props.promptstate["lowerCase"] &&
+          props.promptstate["specialCharacters"] &&
+          !props.promptstate["numbers"] &&
+          !props.promptstate["upperCase"]
+        ) {
+          let newArray = [...caseCharacters, ...specialCharacters];
+          passArray.push(newArray[Math.floor(Math.random() * newArray.length)]);
+        }
+
+        if (
+          props.promptstate["lowerCase"] &&
+          props.promptstate["upperCase"] &&
+          !props.promptstate["specialCharacters"] &&
+          !props.promptstate["numbers"]
+        ) {
+          let newArray = [...upperCharacters, ...caseCharacters];
+          passArray.push(newArray[Math.floor(Math.random() * newArray.length)]);
+        }
+
+        if (
+          props.promptstate["specialCharacters"] &&
+          props.promptstate["upperCase"] &&
+          !props.promptstate["lowerCase"] &&
+          !props.promptstate["numbers"]
+        ) {
+          let newArray = [...upperCharacters, ...specialCharacters];
+          passArray.push(newArray[Math.floor(Math.random() * newArray.length)]);
+        }
+
+        if (
+          props.promptstate["specialCharacters"] &&
+          !props.promptstate["upperCase"] &&
+          !props.promptstate["lowerCase"] &&
+          !props.promptstate["numbers"]
+        ) {
+          let newArray = [...specialCharacters];
+          passArray.push(newArray[Math.floor(Math.random() * newArray.length)]);
+        }
+
+        if (
+          !props.promptstate["specialCharacters"] &&
+          props.promptstate["upperCase"] &&
+          !props.promptstate["lowerCase"] &&
+          !props.promptstate["numbers"]
+        ) {
+          let newArray = [...upperCharacters];
+          passArray.push(newArray[Math.floor(Math.random() * newArray.length)]);
+        }
+
+        if (
+          !props.promptstate["specialCharacters"] &&
+          !props.promptstate["upperCase"] &&
+          props.promptstate["lowerCase"] &&
+          !props.promptstate["numbers"]
+        ) {
+          let newArray = [...caseCharacters];
+          passArray.push(newArray[Math.floor(Math.random() * newArray.length)]);
+        }
+
+        if (
+          !props.promptstate["specialCharacters"] &&
+          !props.promptstate["upperCase"] &&
+          !props.promptstate["lowerCase"] &&
+          props.promptstate["numbers"]
+        ) {
+          let newArray = [...numbers];
+          passArray.push(newArray[Math.floor(Math.random() * newArray.length)]);
         }
       }
 
       // sets generatedPw state to new random generated password
       props.setpromptstate({
         ...props.promptstate,
-        ["generatedPw"]: passArray.join(""),
+        generatedPw: passArray.join(""),
       });
 
       props.onHide();
@@ -178,8 +353,8 @@ const PromptModal = (props) => {
         <Prompt
           promptstate={props.promptstate}
           setpromptstate={props.setpromptstate}
-          lenValidation={validation["lengthValidation"]}
-          charValidation={validation["characterValidation"]}
+          validation={validation}
+          setValidationState={setValidationState}
         />
       </Modal.Body>
       <Modal.Footer>

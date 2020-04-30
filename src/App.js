@@ -51,6 +51,15 @@ const App = () => {
           variant="info"
           onClick={() => {
             setModalShow(true);
+            setState({
+              ...state,
+              generatedPw:
+                "No password generated yet... click button to generate password",
+              specialCharacters: false,
+              length: 0,
+              lowerCase: false,
+              numbers: false,
+            });
           }}
         >
           Generate Password

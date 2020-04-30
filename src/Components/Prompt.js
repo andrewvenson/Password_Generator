@@ -33,8 +33,12 @@ const Prompt = (props) => {
   return (
     <div>
       {/* validation messages display if criteria not met on generate click */}
-      <p style={{ color: "red", fontWeight: "bold" }}>{props.lenValidation}</p>
-      <p style={{ color: "red", fontWeight: "bold" }}>{props.charValidation}</p>
+      <p style={{ color: "red", fontWeight: "bold" }}>
+        {props.validation["lengthValidation"]}
+      </p>
+      <p style={{ color: "red", fontWeight: "bold" }}>
+        {props.validation["characterValidation"]}
+      </p>
 
       {prompts.map((prompt, index) => (
         <React.Fragment>
@@ -44,7 +48,8 @@ const Prompt = (props) => {
           </h6>
           <input
             type={prompt.type}
-            onChange={(e) => {
+            onChange={(e) =>
+              // input onchange events
               prompt.type === "number"
                 ? props.setpromptstate({
                     ...props.promptstate,
@@ -53,8 +58,8 @@ const Prompt = (props) => {
                 : props.setpromptstate({
                     ...props.promptstate,
                     [prompt.prompt]: !props.promptstate[prompt.prompt],
-                  });
-            }}
+                  })
+            }
           />
         </React.Fragment>
       ))}
