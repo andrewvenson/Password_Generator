@@ -18,7 +18,16 @@ const PromptModal = (props) => {
         />
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="info" onClick={() => console.log(props.promptstate)}>
+        <Button
+          variant="info"
+          onClick={() => {
+            props.promptstate["length"] < 8 || props.promptstate["length"] > 128
+              ? console.log(
+                  "length of password should be between 8-128 characters"
+                )
+              : console.log("you good");
+          }}
+        >
           Next
         </Button>
       </Modal.Footer>
