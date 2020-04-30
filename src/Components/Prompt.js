@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Prompt = (props) => {
   const prompts = [
@@ -30,6 +30,11 @@ const Prompt = (props) => {
     },
   ];
 
+  const [validstate, setValidState] = useState({
+    character: false,
+    number: false,
+  });
+
   return (
     <div>
       {/* validation messages display if criteria not met on generate click */}
@@ -50,11 +55,16 @@ const Prompt = (props) => {
             type={prompt.type}
             onChange={(e) =>
               // input onchange events
+
               prompt.type === "number"
-                ? props.setpromptstate({
+                ? (props.setpromptstate({
                     ...props.promptstate,
                     [prompt.prompt]: parseInt(e.target.value),
-                  })
+                  }),
+                  parseInt(e.target.value) >= 8 &&
+                  parseInt(e.target.value) <= 128
+                    ? setValidState({ ...validstate, character: true })
+                    : setValidState({ ...validstate, character: false }))
                 : props.setpromptstate({
                     ...props.promptstate,
                     [prompt.prompt]: !props.promptstate[prompt.prompt],
