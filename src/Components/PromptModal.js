@@ -8,6 +8,10 @@ const PromptModal = (props) => {
     characterValidation: "",
   });
 
+  let pwLength = props.promptstate["length"];
+
+  var passArray = [];
+
   const promptValidation = () => {
     // if both password length AND character type don't meet criteria
     if (
@@ -68,6 +72,96 @@ const PromptModal = (props) => {
         ["lengthValidation"]: "",
         ["characterValidation"]: "",
       });
+
+      const caseCharacters = [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+      ];
+
+      const specialCharacters = [
+        "~",
+        "`",
+        "!",
+        "@",
+        "#",
+        "$",
+        "%",
+        "^",
+        "&",
+        "*",
+        "(",
+        ")",
+        "-",
+        "_",
+        "+",
+        "=",
+        "{",
+        "}",
+        "[",
+        "]",
+        "|",
+        "/",
+        ":",
+        ";",
+        "''",
+        "'",
+        "<",
+        ">",
+        ",",
+        ".",
+        "?",
+      ];
+
+      for (var x = 0; x <= pwLength; x++) {
+        if (props.promptstate["lowerCase"]) {
+          passArray.push(caseCharacters[Math.floor(Math.random() * 26)]);
+        }
+
+        if (props.promptstate["upperCase"]) {
+          let uc = caseCharacters[Math.floor(Math.random() * 26)];
+          passArray.push(uc.toUpperCase());
+        }
+
+        if (props.promptstate["numbers"]) {
+          passArray.push(Math.floor(Math.random() * 99));
+        }
+
+        if (props.promptstate["specialCharacters"]) {
+          passArray.push(specialCharacters[Math.floor(Math.random() * 31)]);
+        }
+      }
+
+      // sets generatedPw state to new random generated password
+      props.setpromptstate({
+        ...props.promptstate,
+        ["generatedPw"]: passArray.join(""),
+      });
+
+      props.onHide();
     }
   };
 

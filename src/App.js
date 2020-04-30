@@ -5,7 +5,7 @@ import PromptModal from "./Components/PromptModal";
 const App = () => {
   const [state, setState] = useState({
     length: 0,
-    generatedPW:
+    generatedPw:
       "No password generated yet... click button to generate password",
     specialCharacters: false,
     upperCase: false,
@@ -44,7 +44,7 @@ const App = () => {
             borderRadius: "4px",
           }}
         >
-          <p style={{ color: "whitesmoke" }}>{state.generatedPW}</p>
+          <p style={{ color: "whitesmoke" }}>{state.generatedPw}</p>
         </div>
         <Button
           style={{ position: "absolute", right: "5px", bottom: "5px" }}
