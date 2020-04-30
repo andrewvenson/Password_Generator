@@ -32,6 +32,9 @@ const Prompt = (props) => {
 
   return (
     <div>
+      <p>{props.lenValidation}</p>
+      <p>{props.charValidation}</p>
+
       {prompts.map((prompt, index) => (
         <React.Fragment>
           {/* you need to make THESE inputs change the state of the parent WITHOUT removing the previous. Be sure to look up the spread operator */}
@@ -41,7 +44,7 @@ const Prompt = (props) => {
           <input
             type={prompt.type}
             onChange={(e) => {
-              typeof e.target.value === "string"
+              prompt.type === "number"
                 ? props.setpromptstate({
                     ...props.promptstate,
                     [prompt.prompt]: parseInt(e.target.value),
