@@ -6,6 +6,7 @@ const PromptModal = (props) => {
   const [validation, setValidationState] = useState({
     lengthValidation: "",
     characterValidation: "",
+    active: false,
   });
 
   let pwLength = props.promptstate["length"];
@@ -183,6 +184,11 @@ const PromptModal = (props) => {
       </Modal.Body>
       <Modal.Footer>
         <Button
+          style={
+            !validation["active"]
+              ? { backgroundColor: "lightgray", borderColor: "lightgray" }
+              : { backgroundColor: "#17A2B8", borderColor: "#17A2B8" }
+          }
           variant="info"
           // call validation on generate click each time
           onClick={() => {

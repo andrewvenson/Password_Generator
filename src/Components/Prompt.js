@@ -33,8 +33,8 @@ const Prompt = (props) => {
   return (
     <div>
       {/* validation messages display if criteria not met on generate click */}
-      <p>{props.lenValidation}</p>
-      <p>{props.charValidation}</p>
+      <p style={{ color: "red", fontWeight: "bold" }}>{props.lenValidation}</p>
+      <p style={{ color: "red", fontWeight: "bold" }}>{props.charValidation}</p>
 
       {prompts.map((prompt, index) => (
         <React.Fragment>
