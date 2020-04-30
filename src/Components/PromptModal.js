@@ -8,24 +8,26 @@ const PromptModal = (props) => {
     characterValidation: "",
   });
 
-  const PromptValidation = () => {
-    // if password doesnt meet require criteria set state to error message
-    if (props.promptstate["length"] < 8 || props.promptstate["length"] > 128) {
+  const promptValidation = () => {
+    // if password length doesn't meet criteria set state to error message
+    if (
+      props.promptstate["length"] < 8 ||
+      props.promptstate["length"] > 128 ||
+      Number.isNaN(props.promptstate["length"])
+    ) {
       setValidationState({
         ...validation,
         ["lengthValidation"]:
-          "length of password should be between 8-128 characters",
+          "Password length must be between 8-128 characters...",
       });
-    }
-    // if password doesnt meet require set state back to empty string
-    else {
+    } else {
       setValidationState({
         ...validation,
         ["lengthValidation"]: "",
       });
     }
 
-    // if password doesnt meet require criteria set state to error message
+    // if password characters aren't selected at all set state to error message
     if (
       !props.promptstate["specialCharacters"] &&
       !props.promptstate["upperCase"] &&
@@ -35,10 +37,10 @@ const PromptModal = (props) => {
       setValidationState({
         ...validation,
         ["characterValidation"]:
-          "At least one character type should be selected",
+          "At least one character type should be selected...",
       });
     }
-    // if password doesnt meet require set state back to empty string
+    // if password does meet require set state back to empty string
     else {
       setValidationState({
         ...validation,
@@ -70,7 +72,7 @@ const PromptModal = (props) => {
           variant="info"
           // call validation on generate click each time
           onClick={() => {
-            PromptValidation();
+            promptValidation();
           }}
         >
           Next
