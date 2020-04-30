@@ -166,10 +166,12 @@ const PromptModal = (props) => {
       var numbers = [];
       var passArray = [];
 
+      // assign all numbers to numbers array
       for (var numba = 0; numba < 10; numba++) {
         numbers.push(numba.toString());
       }
 
+      // iterate through password length value and append new values to pass Array
       for (var iter = 0; iter <= pwLength; iter++) {
         if (
           props.promptstate["lowerCase"] &&
