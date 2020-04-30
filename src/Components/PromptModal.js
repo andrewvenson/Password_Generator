@@ -15,16 +15,16 @@ const PromptModal = (props) => {
       props.promptstate["length"] > 128 ||
       Number.isNaN(props.promptstate["length"])
     ) {
-      setValidationState({
+      setValidationState((validation) => ({
         ...validation,
         ["lengthValidation"]:
           "Password length must be between 8-128 characters...",
-      });
+      }));
     } else {
-      setValidationState({
+      setValidationState((vlidation) => ({
         ...validation,
         ["lengthValidation"]: "",
-      });
+      }));
     }
 
     // if password characters aren't selected at all set state to error message
@@ -34,21 +34,21 @@ const PromptModal = (props) => {
       !props.promptstate["lowerCase"] &&
       !props.promptstate["numbers"]
     ) {
-      setValidationState({
+      setValidationState((validation) => ({
         ...validation,
         ["characterValidation"]:
           "At least one character type should be selected...",
-      });
+      }));
     }
     // if password does meet require set state back to empty string
     else {
-      setValidationState({
-        ...validation,
+      setValidationState((prevValidation) => ({
+        ...prevValidation,
         ["characterValidation"]: "",
-      });
+      }));
     }
 
-    console.log(validation);
+    // console.log(validation);
   };
 
   return (
