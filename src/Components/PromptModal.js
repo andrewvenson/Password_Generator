@@ -358,7 +358,11 @@ const PromptModal = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton></Modal.Header>
+      <Modal.Header closeButton>
+        <h4 style={{ textShadow: "2px 3px 4px lightgray" }}>
+          Password Generator
+        </h4>
+      </Modal.Header>
       <Modal.Body>
         <Prompt
           promptstate={props.promptstate}

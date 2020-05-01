@@ -35,7 +35,9 @@ const App = () => {
           position: "relative",
         }}
       >
-        <p style={{ fontWeight: "bold" }}>Password Generator</p>
+        <h2 style={{ fontWeight: "bold", textShadow: "2px 3px 5px gray" }}>
+          Password Generator
+        </h2>
         <div
           style={{
             backgroundColor: "lightgray",

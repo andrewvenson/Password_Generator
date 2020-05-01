@@ -30,11 +30,6 @@ const Prompt = (props) => {
     },
   ];
 
-  const [validstate, setValidState] = useState({
-    character: false,
-    number: false,
-  });
-
   return (
     <div>
       {/* validation messages display if criteria not met on generate click */}
@@ -48,11 +43,27 @@ const Prompt = (props) => {
       {prompts.map((prompt, index) => (
         <React.Fragment>
           {/* you need to make THESE inputs change the state of the parent WITHOUT removing the previous. Be sure to look up the spread operator */}
-          <h6 key={index} style={{ fontWeight: "bold" }}>
+
+          <h6
+            key={index}
+            style={{
+              fontWeight: "light",
+              marginBottom: "2px",
+              color: "#17A2B8",
+              textShadow: "2px 3px 4px lightgray",
+            }}
+          >
             {prompt.text}
           </h6>
+
           <input
             type={prompt.type}
+            style={{
+              border: "1px solid lightgray",
+              borderRadius: "5px",
+              marginBottom: "5px",
+              boxShadow: "3px 4px 8px lightgray",
+            }}
             onChange={(e) =>
               // input onchange events
               prompt.type === "number"

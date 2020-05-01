@@ -1,9 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Passero+One&display=swap");
+
 html {
   height: 100%;
 }
 
 body {
   height: 100%;
+  font-family: "Passero One", cursive;
 }
 
 #root {
