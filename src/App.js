@@ -28,9 +28,9 @@ const App = () => {
       <div
         className="pgdiv"
         style={{
-          height: "300px",
+          height: "310px",
           border: "1px solid #f2f2f2",
-          padding: "20px",
+          padding: "10px",
           borderRadius: "10px",
           boxShadow: "4px 8px 16px lightgray",
           position: "relative",
@@ -51,19 +51,23 @@ const App = () => {
         <div
           style={{
             backgroundColor: "lightgray",
-            padding: "25px",
+            padding: "15px",
             textShadow: "2px 4px 5px gray",
             borderRadius: "4px",
+            wordWrap: "break-word",
+            height: "140px",
           }}
         >
-          <h5 style={{ color: "whitesmoke" }}>{state.generatedPw}</h5>
+          <h5 className="generatedText" style={{ color: "whitesmoke" }}>
+            {state.generatedPw}
+          </h5>
         </div>
         <hr style={{ color: "gray" }} />
 
         <Button
           style={{
             position: "absolute",
-            right: "5px",
+            right: "10px",
             bottom: "5px",
             backgroundColor: "#de6161",
             borderColor: "#de6161",

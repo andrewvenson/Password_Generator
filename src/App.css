@@ -34,4 +34,8 @@ body {
   .pwtitle {
     font-size: 20px !important;
   }
+
+  .generatedText {
+    font-size: 15px !important;
+  }
 }
