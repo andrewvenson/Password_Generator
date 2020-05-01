@@ -65,10 +65,11 @@ const Prompt = (props) => {
                   parseInt(e.target.value) <= 128
                     ? setValidState({ ...validstate, character: true })
                     : setValidState({ ...validstate, character: false }))
-                : props.setpromptstate({
+                : (props.setpromptstate({
                     ...props.promptstate,
                     [prompt.prompt]: !props.promptstate[prompt.prompt],
-                  })
+                  }),
+                  console.log("antonio why is this not loggig"))
             }
           />
         </React.Fragment>
