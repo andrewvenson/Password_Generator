@@ -68,7 +68,7 @@ const App = () => {
             borderColor: "#de6161",
             boxShadow: "2px 3px 8px lightgray",
           }}
-          // variant="info"
+          className="genpw"
           onClick={() => {
             setModalShow(true);
             setState({

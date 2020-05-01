@@ -20,6 +20,10 @@ body {
   height: 100%;
 }
 
+.genpw:hover {
+  box-shadow: 0px 0px 12px rgb(119, 119, 119) !important;
+}
+
 .pgdiv:hover {
   /* background-color: white !important; */
   opacity: 0.9 !important;
