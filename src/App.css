@@ -29,3 +29,9 @@ body {
   opacity: 0.9 !important;
   box-shadow: 5px 8px 16px whitesmoke !important;
 }
+
+@media only screen and (max-width: 400px) {
+  .pwtitle {
+    font-size: 28px !important;
+  }
+}

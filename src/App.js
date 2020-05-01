@@ -43,6 +43,7 @@ const App = () => {
             textShadow: "2px 3px 5px gray",
             color: "#2657eb",
           }}
+          className="pwtitle"
         >
           Password Generator
         </h2>
