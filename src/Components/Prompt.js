@@ -5,33 +5,33 @@ const Prompt = (props) => {
     {
       prompt: "length",
       text:
-        "Choose length of password. Length must be between 8-128 characters",
+        "Choose length of password. Length must be between 8-128 characters...",
       type: "number",
     },
     {
       prompt: "lowerCase",
-      text: "Use lowercase characters",
+      text: "Use lowercase characters (abc)",
       type: "checkbox",
     },
     {
       prompt: "upperCase",
-      text: "Use uppercase characters",
+      text: "Use uppercase characters (ABC)",
       type: "checkbox",
     },
     {
       prompt: "numbers",
-      text: "Use numeric characters",
+      text: "Use numeric characters (123)",
       type: "checkbox",
     },
     {
       prompt: "specialCharacters",
-      text: "Use special characters",
+      text: "Use special characters (*%&)",
       type: "checkbox",
     },
   ];
 
   return (
-    <div>
+    <>
       {/* validation messages display if criteria not met on generate click */}
       <p style={{ color: "red", fontWeight: "bold" }}>
         {props.validation["lengthValidation"]}
@@ -41,11 +41,10 @@ const Prompt = (props) => {
       </p>
 
       {prompts.map((prompt, index) => (
-        <React.Fragment>
+        <React.Fragment key={index}>
           {/* you need to make THESE inputs change the state of the parent WITHOUT removing the previous. Be sure to look up the spread operator */}
 
           <h6
-            key={index}
             style={{
               fontWeight: "light",
               marginBottom: "2px",
@@ -53,7 +52,7 @@ const Prompt = (props) => {
               textShadow: "2px 3px 4px lightgray",
             }}
           >
-            {prompt.text}...
+            {prompt.text}
           </h6>
 
           <input
@@ -79,7 +78,7 @@ const Prompt = (props) => {
           />
         </React.Fragment>
       ))}
-    </div>
+    </>
   );
 };
 
