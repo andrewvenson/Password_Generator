@@ -32,6 +32,6 @@ body {
 
 @media only screen and (max-width: 400px) {
   .pwtitle {
-    font-size: 28px !important;
+    font-size: 20px !important;
   }
 }
