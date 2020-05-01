@@ -1,31 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Prompt = (props) => {
   const prompts = [
     {
       prompt: "length",
       text:
-        "Choose length of password. Length must be between 8-128 characters:",
+        "Choose length of password. Length must be between 8-128 characters",
       type: "number",
     },
     {
       prompt: "lowerCase",
-      text: "Use lowercase characters:",
+      text: "Use lowercase characters",
       type: "checkbox",
     },
     {
       prompt: "upperCase",
-      text: "Use uppercase characters:",
+      text: "Use uppercase characters",
       type: "checkbox",
     },
     {
       prompt: "numbers",
-      text: "Use numeric characters:",
+      text: "Use numeric characters",
       type: "checkbox",
     },
     {
       prompt: "specialCharacters",
-      text: "Use special characters:",
+      text: "Use special characters",
       type: "checkbox",
     },
   ];
@@ -53,7 +53,7 @@ const Prompt = (props) => {
               textShadow: "2px 3px 4px lightgray",
             }}
           >
-            {prompt.text}
+            {prompt.text}...
           </h6>
 
           <input

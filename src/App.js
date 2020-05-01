@@ -38,6 +38,7 @@ const App = () => {
         <h2 style={{ fontWeight: "bold", textShadow: "2px 3px 5px gray" }}>
           Password Generator
         </h2>
+        <hr style={{ color: "gray" }} />
         <div
           style={{
             backgroundColor: "lightgray",
@@ -46,8 +47,10 @@ const App = () => {
             borderRadius: "4px",
           }}
         >
-          <p style={{ color: "whitesmoke" }}>{state.generatedPw}</p>
+          <h5 style={{ color: "whitesmoke" }}>{state.generatedPw}</h5>
         </div>
+        <hr style={{ color: "gray" }} />
+
         <Button
           style={{ position: "absolute", right: "5px", bottom: "5px" }}
           variant="info"
