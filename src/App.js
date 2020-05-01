@@ -26,6 +26,7 @@ const App = () => {
       }}
     >
       <div
+        className="pgdiv"
         style={{
           height: "300px",
           border: "1px solid #f2f2f2",
@@ -33,6 +34,7 @@ const App = () => {
           borderRadius: "10px",
           boxShadow: "4px 8px 16px lightgray",
           position: "relative",
+          backgroundColor: "whitesmoke",
         }}
       >
         <h2 style={{ fontWeight: "bold", textShadow: "2px 3px 5px gray" }}>
