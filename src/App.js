@@ -26,6 +26,7 @@ const App = () => {
       }}
     >
       <div
+        className="pgdiv"
         style={{
           height: "300px",
           border: "1px solid #f2f2f2",
@@ -33,9 +34,19 @@ const App = () => {
           borderRadius: "10px",
           boxShadow: "4px 8px 16px lightgray",
           position: "relative",
+          backgroundColor: "whitesmoke",
         }}
       >
-        <p style={{ fontWeight: "bold" }}>Password Generator</p>
+        <h2
+          style={{
+            fontWeight: "bold",
+            textShadow: "2px 3px 5px gray",
+            color: "#2657eb",
+          }}
+        >
+          Password Generator
+        </h2>
+        <hr style={{ color: "gray" }} />
         <div
           style={{
             backgroundColor: "lightgray",
@@ -44,11 +55,20 @@ const App = () => {
             borderRadius: "4px",
           }}
         >
-          <p style={{ color: "whitesmoke" }}>{state.generatedPw}</p>
+          <h5 style={{ color: "whitesmoke" }}>{state.generatedPw}</h5>
         </div>
+        <hr style={{ color: "gray" }} />
+
         <Button
-          style={{ position: "absolute", right: "5px", bottom: "5px" }}
-          variant="info"
+          style={{
+            position: "absolute",
+            right: "5px",
+            bottom: "5px",
+            backgroundColor: "#de6161",
+            borderColor: "#de6161",
+            boxShadow: "2px 3px 8px lightgray",
+          }}
+          // variant="info"
           onClick={() => {
             setModalShow(true);
             setState({

@@ -1,11 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
 html {
   height: 100%;
 }
 
 body {
   height: 100%;
+  font-family: "Righteous", cursive;
+  background: #de6161; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #de6161,
+    #2657eb
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #de6161, #2657eb);
 }
 
 #root {
   height: 100%;
+}
+
+.pgdiv:hover {
+  /* background-color: white !important; */
+  opacity: 0.9 !important;
+  box-shadow: 5px 8px 16px whitesmoke !important;
 }
