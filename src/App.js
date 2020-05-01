@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import "./App.css";
 import { Container, Button } from "react-bootstrap";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import PromptModal from "./Components/PromptModal";
+import "./App.css";
+
 const App = () => {
   const [state, setState] = useState({
     length: 0,
@@ -11,6 +13,11 @@ const App = () => {
     upperCase: false,
     lowerCase: false,
     numbers: false,
+  });
+
+  const [copyclip, setCopyClip] = useState({
+    value: "",
+    copied: false,
   });
 
   // state for modal
@@ -85,10 +92,39 @@ const App = () => {
               lowerCase: false,
               numbers: false,
             });
+            setCopyClip({ ...copyclip, copied: false });
           }}
         >
           Generate Password
         </Button>
+
+        <CopyToClipboard
+          text={state["generatedPw"]}
+          onCopy={() => {
+            setCopyClip({ ...copyclip, copied: true });
+          }}
+        >
+          <Button
+            className="genpw"
+            style={{ position: "absolute", left: "10px", bottom: "5px" }}
+            variant="secondary"
+          >
+            Copy
+          </Button>
+        </CopyToClipboard>
+
+        {copyclip["copied"] ? (
+          <span
+            style={{
+              color: "#de6161",
+              position: "absolute",
+              left: "78px",
+              bottom: "10px",
+            }}
+          >
+            Copied.
+          </span>
+        ) : null}
       </div>
       <PromptModal
         show={modalShow}
