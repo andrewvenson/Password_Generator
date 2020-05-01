@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, Button } from "react-bootstrap";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import PromptModal from "./Components/PromptModal";
+import Clipboard from "./images/clipboard.png";
 import "./App.css";
 
 const App = () => {
@@ -109,17 +110,18 @@ const App = () => {
             style={{ position: "absolute", left: "10px", bottom: "5px" }}
             variant="secondary"
           >
-            Copy
+            Copy <img src={Clipboard} style={{ height: "20px" }} />
           </Button>
         </CopyToClipboard>
 
         {copyclip["copied"] ? (
           <span
+            className="copiedText"
             style={{
               color: "#de6161",
               position: "absolute",
-              left: "78px",
-              bottom: "10px",
+              left: "10px",
+              bottom: "45px",
             }}
           >
             Copied.
