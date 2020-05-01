@@ -31,7 +31,7 @@ const Prompt = (props) => {
   ];
 
   return (
-    <div>
+    <>
       {/* validation messages display if criteria not met on generate click */}
       <p style={{ color: "red", fontWeight: "bold" }}>
         {props.validation["lengthValidation"]}
@@ -41,11 +41,10 @@ const Prompt = (props) => {
       </p>
 
       {prompts.map((prompt, index) => (
-        <React.Fragment>
+        <React.Fragment key={index}>
           {/* you need to make THESE inputs change the state of the parent WITHOUT removing the previous. Be sure to look up the spread operator */}
 
           <h6
-            key={index}
             style={{
               fontWeight: "light",
               marginBottom: "2px",
@@ -79,7 +78,7 @@ const Prompt = (props) => {
           />
         </React.Fragment>
       ))}
-    </div>
+    </>
   );
 };
 

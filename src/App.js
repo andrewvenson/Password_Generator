@@ -110,7 +110,8 @@ const App = () => {
             style={{ position: "absolute", left: "10px", bottom: "5px" }}
             variant="secondary"
           >
-            Copy <img src={Clipboard} style={{ height: "20px" }} />
+            Copy{" "}
+            <img src={Clipboard} style={{ height: "20px" }} alt="clipboard" />
           </Button>
         </CopyToClipboard>
 
