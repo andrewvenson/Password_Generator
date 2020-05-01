@@ -69,7 +69,12 @@ const Prompt = (props) => {
                     ...props.promptstate,
                     [prompt.prompt]: !props.promptstate[prompt.prompt],
                   }),
-                  console.log("antonio why is this not loggig"))
+                  props.promptstate["specialCharacters"] ||
+                  props.promptstate["upperCase"] ||
+                  props.promptstate["lowerCase"] ||
+                  props.promptstate["number"]
+                    ? console.log("yay")
+                    : console.log("nay"))
             }
           />
         </React.Fragment>
