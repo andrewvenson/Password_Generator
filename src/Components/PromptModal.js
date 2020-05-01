@@ -6,8 +6,9 @@ const PromptModal = (props) => {
   const [validation, setValidationState] = useState({
     lengthValidation: "",
     characterValidation: "",
-    active: false,
   });
+
+  const [activebutt, setActiveButtonState] = useState(false);
 
   let pwLength = props.promptstate["length"];
 
@@ -357,12 +358,14 @@ const PromptModal = (props) => {
           setpromptstate={props.setpromptstate}
           validation={validation}
           setValidationState={setValidationState}
+          activebutt={activebutt}
+          setActiveButtonState={setActiveButtonState}
         />
       </Modal.Body>
       <Modal.Footer>
         <Button
           style={
-            !validation["active"]
+            !activebutt["active"]
               ? { backgroundColor: "lightgray", borderColor: "lightgray" }
               : { backgroundColor: "#17A2B8", borderColor: "#17A2B8" }
           }

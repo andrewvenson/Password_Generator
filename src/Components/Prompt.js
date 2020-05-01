@@ -35,6 +35,14 @@ const Prompt = (props) => {
     number: false,
   });
 
+  if (validstate["character"] && validstate["number"]) {
+    console.log(props.validation["active"]);
+    props.setActiveButtonState({
+      ...props.activebutt,
+      [props.activebutt["active"]]: true,
+    });
+  }
+
   return (
     <div>
       {/* validation messages display if criteria not met on generate click */}
@@ -63,8 +71,8 @@ const Prompt = (props) => {
                   }),
                   parseInt(e.target.value) >= 8 &&
                   parseInt(e.target.value) <= 128
-                    ? setValidState({ ...validstate, character: true })
-                    : setValidState({ ...validstate, character: false }))
+                    ? setValidState({ ...validstate, number: true })
+                    : setValidState({ ...validstate, number: false }))
                 : (props.setpromptstate({
                     ...props.promptstate,
                     [prompt.prompt]: !props.promptstate[prompt.prompt],
@@ -73,8 +81,9 @@ const Prompt = (props) => {
                   props.promptstate["upperCase"] ||
                   props.promptstate["lowerCase"] ||
                   props.promptstate["number"]
-                    ? console.log("yay")
-                    : console.log("nay"))
+                    ? setValidState({ ...validstate, character: true })
+                    : setValidState({ ...validstate, character: false }),
+                  console.log(validstate))
             }
           />
         </React.Fragment>
