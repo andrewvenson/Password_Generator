@@ -8,12 +8,9 @@ const PromptModal = (props) => {
     characterValidation: "",
   });
 
-  const [activebutt, setActiveButtonState] = useState(false);
-
   let pwLength = props.promptstate["length"];
 
   const promptValidation = () => {
-    console.log("hallelluha");
     // if both password length AND character type don't meet criteria
     if (
       (props.promptstate["length"] < 8 ||
@@ -339,9 +336,19 @@ const PromptModal = (props) => {
         ...props.promptstate,
         generatedPw: passArray.join(""),
       });
-
       props.onHide();
     }
+  };
+
+  const buttonColor = () => {
+    return props.promptstate.length >= 8 &&
+      props.promptstate.length <= 128 &&
+      (props.promptstate["specialCharacters"] ||
+        props.promptstate["upperCase"] ||
+        props.promptstate["lowerCase"] ||
+        props.promptstate["numbers"])
+      ? { backgroundColor: "#17A2B8", borderColor: "#17A2B8" }
+      : { backgroundColor: "lightgray", borderColor: "lightgray" };
   };
 
   return (
@@ -358,17 +365,11 @@ const PromptModal = (props) => {
           setpromptstate={props.setpromptstate}
           validation={validation}
           setValidationState={setValidationState}
-          activebutt={activebutt}
-          setActiveButtonState={setActiveButtonState}
         />
       </Modal.Body>
       <Modal.Footer>
         <Button
-          style={
-            !activebutt["active"]
-              ? { backgroundColor: "lightgray", borderColor: "lightgray" }
-              : { backgroundColor: "#17A2B8", borderColor: "#17A2B8" }
-          }
+          style={buttonColor()}
           variant="info"
           // call validation on generate click each time
           onClick={() => {

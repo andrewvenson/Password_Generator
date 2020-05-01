@@ -35,15 +35,6 @@ const Prompt = (props) => {
     number: false,
   });
 
-  // whyyyyyyy
-  if (validstate["character"] && validstate["number"]) {
-    console.log(props.validation["active"]);
-    props.setActiveButtonState({
-      ...props.activebutt,
-      [props.activebutt["active"]]: true,
-    });
-  }
-
   return (
     <div>
       {/* validation messages display if criteria not met on generate click */}
@@ -64,27 +55,15 @@ const Prompt = (props) => {
             type={prompt.type}
             onChange={(e) =>
               // input onchange events
-
               prompt.type === "number"
-                ? (props.setpromptstate({
+                ? props.setpromptstate({
                     ...props.promptstate,
                     [prompt.prompt]: parseInt(e.target.value),
-                  }),
-                  parseInt(e.target.value) >= 8 &&
-                  parseInt(e.target.value) <= 128
-                    ? setValidState({ ...validstate, number: true })
-                    : setValidState({ ...validstate, number: false }))
-                : (props.setpromptstate({
+                  })
+                : props.setpromptstate({
                     ...props.promptstate,
                     [prompt.prompt]: !props.promptstate[prompt.prompt],
-                  }),
-                  props.promptstate["specialCharacters"] ||
-                  props.promptstate["upperCase"] ||
-                  props.promptstate["lowerCase"] ||
-                  props.promptstate["number"]
-                    ? setValidState({ ...validstate, character: true })
-                    : setValidState({ ...validstate, character: false }),
-                  console.log(validstate))
+                  })
             }
           />
         </React.Fragment>
