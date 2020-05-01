@@ -35,6 +35,7 @@ const Prompt = (props) => {
     number: false,
   });
 
+  // whyyyyyyy
   if (validstate["character"] && validstate["number"]) {
     console.log(props.validation["active"]);
     props.setActiveButtonState({
