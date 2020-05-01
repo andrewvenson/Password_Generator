@@ -347,7 +347,7 @@ const PromptModal = (props) => {
         props.promptstate["upperCase"] ||
         props.promptstate["lowerCase"] ||
         props.promptstate["numbers"])
-      ? { backgroundColor: "#17A2B8", borderColor: "#17A2B8" }
+      ? { backgroundColor: "#de6161", borderColor: "#de6161" }
       : { backgroundColor: "lightgray", borderColor: "lightgray" };
   };
 
@@ -359,7 +359,12 @@ const PromptModal = (props) => {
       centered
     >
       <Modal.Header closeButton>
-        <h4 style={{ textShadow: "2px 3px 4px lightgray" }}>
+        <h4
+          style={{
+            textShadow: "2px 3px 4px lightgray",
+            color: "#2657eb",
+          }}
+        >
           Password Generator
         </h4>
       </Modal.Header>

@@ -37,7 +37,13 @@ const App = () => {
           backgroundColor: "whitesmoke",
         }}
       >
-        <h2 style={{ fontWeight: "bold", textShadow: "2px 3px 5px gray" }}>
+        <h2
+          style={{
+            fontWeight: "bold",
+            textShadow: "2px 3px 5px gray",
+            color: "#2657eb",
+          }}
+        >
           Password Generator
         </h2>
         <hr style={{ color: "gray" }} />
@@ -54,8 +60,15 @@ const App = () => {
         <hr style={{ color: "gray" }} />
 
         <Button
-          style={{ position: "absolute", right: "5px", bottom: "5px" }}
-          variant="info"
+          style={{
+            position: "absolute",
+            right: "5px",
+            bottom: "5px",
+            backgroundColor: "#de6161",
+            borderColor: "#de6161",
+            boxShadow: "2px 3px 8px lightgray",
+          }}
+          // variant="info"
           onClick={() => {
             setModalShow(true);
             setState({
