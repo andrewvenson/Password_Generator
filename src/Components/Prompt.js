@@ -48,7 +48,12 @@ const Prompt = (props) => {
             style={{
               fontWeight: "light",
               marginBottom: "2px",
-              color: "#17A2B8",
+              color:
+                props.back["background"] === "dark"
+                  ? "#008b10"
+                  : props.back["background"] === "light"
+                  ? "gray"
+                  : "#2657EB",
               textShadow: "2px 3px 4px lightgray",
             }}
           >

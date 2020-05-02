@@ -31,7 +31,7 @@ const App = () => {
         ? "linear-gradient(to right, #de6161, #2657eb)"
         : back["background"] === "dark"
         ? "linear-gradient(315deg, #000000 0%, #414141 74%)"
-        : back["backgournd"] === "light"
+        : back["background"] === "light"
         ? "linear-gradient(to right, #ece9e6, #ffffff)"
         : "white",
     height: "100%",
@@ -110,7 +110,7 @@ const App = () => {
                 back["background"] === "groovy"
                   ? "#2657eb"
                   : back["background"] === "dark"
-                  ? "gray"
+                  ? "#424242"
                   : "lightgray",
             }}
             className="pwtitle"
@@ -121,7 +121,11 @@ const App = () => {
           <div
             style={{
               backgroundColor:
-                back["background"] === "dark" ? "#454545" : "lightgray",
+                back["background"] === "dark"
+                  ? "#454545"
+                  : back["background"] === "groovy"
+                  ? "#2657eb"
+                  : "lightgray",
               padding: "15px",
               textShadow: "2px 4px 5px gray",
               borderRadius: "4px",
@@ -196,7 +200,12 @@ const App = () => {
             <span
               className="copiedText"
               style={{
-                color: back["background"] === "dark" ? "#008b10" : "#de6161",
+                color:
+                  back["background"] === "dark"
+                    ? "#008b10"
+                    : back["background"] === "light"
+                    ? "black"
+                    : "#de6161",
                 position: "absolute",
                 left: "10px",
                 bottom: "45px",
@@ -211,6 +220,7 @@ const App = () => {
           onHide={() => setModalShow(false)}
           promptstate={state}
           setpromptstate={setState}
+          back={back}
         />
       </Container>
     </div>
