@@ -7,13 +7,6 @@ html {
 body {
   height: 100%;
   font-family: "Righteous", cursive;
-  background: #de6161; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #de6161,
-    #2657eb
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #de6161, #2657eb);
 }
 
 #root {
@@ -27,7 +20,7 @@ body {
 .pgdiv:hover {
   /* background-color: white !important; */
   opacity: 0.9 !important;
-  box-shadow: 5px 8px 16px whitesmoke !important;
+  box-shadow: 5px 8px 16px gray !important;
 }
 
 @media only screen and (max-width: 400px) {
