@@ -347,7 +347,20 @@ const PromptModal = (props) => {
         props.promptstate["upperCase"] ||
         props.promptstate["lowerCase"] ||
         props.promptstate["numbers"])
-      ? { backgroundColor: "#de6161", borderColor: "#de6161" }
+      ? {
+          backgroundColor:
+            props.back["background"] === "dark"
+              ? "#008b10"
+              : props.back["background"] === "light"
+              ? "black"
+              : "#de6161",
+          borderColor:
+            props.back["background"] === "dark"
+              ? "#008b10"
+              : props.back["background"] === "light"
+              ? "black"
+              : "#de6161",
+        }
       : { backgroundColor: "lightgray", borderColor: "lightgray" };
   };
 
@@ -362,7 +375,12 @@ const PromptModal = (props) => {
         <h4
           style={{
             textShadow: "2px 3px 4px lightgray",
-            color: "#2657eb",
+            color:
+              props.back["background"] === "dark"
+                ? "#008b10"
+                : props.back["background"] === "light"
+                ? "gray"
+                : "#2657EB",
           }}
         >
           Password Generator
@@ -374,6 +392,7 @@ const PromptModal = (props) => {
           setpromptstate={props.setpromptstate}
           validation={validation}
           setValidationState={setValidationState}
+          back={props.back}
         />
       </Modal.Body>
       <Modal.Footer>
