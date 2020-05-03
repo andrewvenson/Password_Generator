@@ -108,7 +108,7 @@ const App = () => {
                   : "2px 3px 5px gray",
               color:
                 back["background"] === "groovy"
-                  ? "#2657eb"
+                  ? "#DE6161"
                   : back["background"] === "dark"
                   ? "#424242"
                   : "lightgray",

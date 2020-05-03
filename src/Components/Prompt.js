@@ -54,7 +54,10 @@ const Prompt = (props) => {
                   : props.back["background"] === "light"
                   ? "gray"
                   : "#2657EB",
-              textShadow: "2px 3px 4px lightgray",
+              textShadow:
+                props.back["background"] === "dark"
+                  ? "2px 3px 4px black"
+                  : "2px 3px 4px lightgray",
             }}
           >
             {prompt.text}
@@ -66,7 +69,10 @@ const Prompt = (props) => {
               border: "1px solid lightgray",
               borderRadius: "5px",
               marginBottom: "5px",
-              boxShadow: "3px 4px 8px lightgray",
+              boxShadow:
+                props.back["background"] === "dark"
+                  ? "3px 4px 8px black"
+                  : "3px 4px 8px lightgray",
             }}
             onChange={(e) =>
               // input onchange events
