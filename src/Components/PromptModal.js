@@ -361,12 +361,20 @@ const PromptModal = (props) => {
               ? "black"
               : "#de6161",
         }
-      : { backgroundColor: "lightgray", borderColor: "lightgray" };
+      : {
+          backgroundColor: "#ECECEC",
+          borderColor: "#ECECEC",
+          color: "lightgray",
+        };
   };
 
   const backgroundColor = () => {
     return props.back["background"] === "dark"
-      ? { backgroundColor: "#1F1F1F" }
+      ? {
+          backgroundColor: "#1F1F1F",
+          borderBottom: "1px solid #1a1a1a",
+          borderTop: "1px solid #1a1a1a",
+        }
       : { backgroundColor: "whitesmoke" };
   };
 

@@ -45,7 +45,7 @@ const App = () => {
       <Container style={{ display: "flex", justifyContent: "center" }}>
         <Button
           variant="dark"
-          style={{ margin: "5px" }}
+          style={{ margin: "5px", color: "#008b10" }}
           onClick={() => setBackground({ ...back, background: "dark" })}
         >
           Dark
@@ -136,7 +136,8 @@ const App = () => {
             <h5
               className="generatedText"
               style={{
-                color: "whitesmoke",
+                color: back["background"] === "dark" ? "#008b10" : "whitesmoke",
+                textShadow: "2px 3px 4px black",
               }}
             >
               {state.generatedPw}
