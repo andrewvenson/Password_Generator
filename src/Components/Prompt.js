@@ -69,6 +69,10 @@ const Prompt = (props) => {
               border: "1px solid lightgray",
               borderRadius: "5px",
               marginBottom: "5px",
+              backgroundColor:
+                props.back["background"] === "dark" ? "#525252" : "whitesmoke",
+              borderColor:
+                props.back["background"] === "dark" ? "#525252" : "whitesmoke",
               boxShadow:
                 props.back["background"] === "dark"
                   ? "3px 4px 8px black"
