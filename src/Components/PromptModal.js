@@ -374,8 +374,9 @@ const PromptModal = (props) => {
           backgroundColor: "#1F1F1F",
           borderBottom: "1px solid #1a1a1a",
           borderTop: "1px solid #1a1a1a",
+          borderRadius: "0px",
         }
-      : { backgroundColor: "whitesmoke" };
+      : { backgroundColor: "whitesmoke", borderRadius: "0px" };
   };
 
   return (
