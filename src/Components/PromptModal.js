@@ -364,6 +364,12 @@ const PromptModal = (props) => {
       : { backgroundColor: "lightgray", borderColor: "lightgray" };
   };
 
+  const backgroundColor = () => {
+    return props.back["background"] === "dark"
+      ? { backgroundColor: "#1F1F1F" }
+      : { backgroundColor: "whitesmoke" };
+  };
+
   return (
     <Modal
       {...props}
@@ -371,22 +377,25 @@ const PromptModal = (props) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header closeButton>
+      <Modal.Header style={backgroundColor()} closeButton>
         <h4
           style={{
-            textShadow: "2px 3px 4px lightgray",
+            textShadow:
+              props.back["background"] === "dark"
+                ? "2px 3px 4px black"
+                : "2px 3px 4px lightgray",
             color:
               props.back["background"] === "dark"
                 ? "#008b10"
                 : props.back["background"] === "light"
-                ? "gray"
-                : "#2657EB",
+                ? "black"
+                : "#DE6161",
           }}
         >
           Password Generator
         </h4>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body style={backgroundColor()}>
         <Prompt
           promptstate={props.promptstate}
           setpromptstate={props.setpromptstate}
@@ -395,7 +404,7 @@ const PromptModal = (props) => {
           back={props.back}
         />
       </Modal.Body>
-      <Modal.Footer>
+      <Modal.Footer style={backgroundColor()}>
         <Button
           style={buttonColor()}
           variant="info"
