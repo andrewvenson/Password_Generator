@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { MatterContext } from "../MatterContext";
 
 const Prompt = (props) => {
+  let context = useContext(MatterContext);
+
   const prompts = [
     {
       prompt: "length",
@@ -49,13 +52,13 @@ const Prompt = (props) => {
               fontWeight: "light",
               marginBottom: "2px",
               color:
-                props.back["background"] === "dark"
+                context[2]["background"] === "dark"
                   ? "#008b10"
-                  : props.back["background"] === "light"
+                  : context[2]["background"] === "light"
                   ? "gray"
                   : "#2657EB",
               textShadow:
-                props.back["background"] === "dark"
+                context[2]["background"] === "dark"
                   ? "2px 3px 4px black"
                   : "2px 3px 4px lightgray",
             }}
@@ -70,24 +73,24 @@ const Prompt = (props) => {
               borderRadius: "5px",
               marginBottom: "5px",
               backgroundColor:
-                props.back["background"] === "dark" ? "#525252" : "whitesmoke",
+                context[2]["background"] === "dark" ? "#525252" : "whitesmoke",
               borderColor:
-                props.back["background"] === "dark" ? "#525252" : "lightgray",
+                context[2]["background"] === "dark" ? "#525252" : "lightgray",
               boxShadow:
-                props.back["background"] === "dark"
+                context[2]["background"] === "dark"
                   ? "3px 4px 8px black"
                   : "3px 4px 8px lightgray",
             }}
             onChange={(e) =>
               // input onchange events
               prompt.type === "number"
-                ? props.setpromptstate({
-                    ...props.promptstate,
+                ? context[1]({
+                    ...context[0],
                     [prompt.prompt]: parseInt(e.target.value),
                   })
-                : props.setpromptstate({
-                    ...props.promptstate,
-                    [prompt.prompt]: !props.promptstate[prompt.prompt],
+                : context[1]({
+                    ...context[0],
+                    [prompt.prompt]: !context[0][prompt.prompt],
                   })
             }
           />

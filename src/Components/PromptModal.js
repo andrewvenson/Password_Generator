@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { MatterContext } from "../MatterContext";
 import Prompt from "./Prompt";
 import { Modal, Button } from "react-bootstrap";
 
 const PromptModal = (props) => {
+  let context = useContext(MatterContext);
+
   const [validation, setValidationState] = useState({
     lengthValidation: "",
     characterValidation: "",
@@ -108,7 +111,7 @@ const PromptModal = (props) => {
   // Generate password function
   const generatePass = (criteria) => {
     // loop through length of password
-    for (var x = 0; x < props.promptstate["length"]; x++) {
+    for (var x = 0; x < context[0]["length"]; x++) {
       // set new array to hold new random characters on each iteration
       let newArray = [];
 
@@ -123,8 +126,8 @@ const PromptModal = (props) => {
     }
 
     // sets generatedPw state to new random generated password
-    props.setpromptstate({
-      ...props.promptstate,
+    context[1]({
+      ...context[0],
       generatedPw: passArray.join(""),
     });
     props.onHide();
@@ -133,13 +136,13 @@ const PromptModal = (props) => {
   const promptValidation = () => {
     // if both password length AND character type don't meet criteria
     if (
-      (props.promptstate["length"] < 8 ||
-        props.promptstate["length"] > 128 ||
-        Number.isNaN(props.promptstate["length"])) &&
-      !props.promptstate["specialCharacters"] &&
-      !props.promptstate["upperCase"] &&
-      !props.promptstate["lowerCase"] &&
-      !props.promptstate["numbers"]
+      (context[0]["length"] < 8 ||
+        context[0]["length"] > 128 ||
+        Number.isNaN(context[0]["length"])) &&
+      !context[0]["specialCharacters"] &&
+      !context[0]["upperCase"] &&
+      !context[0]["lowerCase"] &&
+      !context[0]["numbers"]
     ) {
       setValidationState({
         ...validation,
@@ -150,13 +153,13 @@ const PromptModal = (props) => {
     }
     // if password length does NOT meet criteria and character type does meet criteria
     else if (
-      (props.promptstate["length"] < 8 ||
-        props.promptstate["length"] > 128 ||
-        Number.isNaN(props.promptstate["length"])) &&
-      (props.promptstate["specialCharacters"] ||
-        props.promptstate["upperCase"] ||
-        props.promptstate["lowerCase"] ||
-        props.promptstate["numbers"])
+      (context[0]["length"] < 8 ||
+        context[0]["length"] > 128 ||
+        Number.isNaN(context[0]["length"])) &&
+      (context[0]["specialCharacters"] ||
+        context[0]["upperCase"] ||
+        context[0]["lowerCase"] ||
+        context[0]["numbers"])
     ) {
       setValidationState({
         ...validation,
@@ -166,13 +169,13 @@ const PromptModal = (props) => {
     }
     // if password length does meet criteria and character type does NOT meet criteria
     else if (
-      (props.promptstate["length"] >= 8 ||
-        props.promptstate["length"] <= 128 ||
-        Number.isNaN(props.promptstate["length"])) &&
-      !props.promptstate["specialCharacters"] &&
-      !props.promptstate["upperCase"] &&
-      !props.promptstate["lowerCase"] &&
-      !props.promptstate["numbers"]
+      (context[0]["length"] >= 8 ||
+        context[0]["length"] <= 128 ||
+        Number.isNaN(context[0]["length"])) &&
+      !context[0]["specialCharacters"] &&
+      !context[0]["upperCase"] &&
+      !context[0]["lowerCase"] &&
+      !context[0]["numbers"]
     ) {
       setValidationState({
         ...validation,
@@ -191,32 +194,32 @@ const PromptModal = (props) => {
 
       // Call Generate pass function | to generate new password | pass props values and corresponding criteria array
       generatePass([
-        [props.promptstate["specialCharacters"], specialCharacters],
-        [props.promptstate["upperCase"], upperCharacters],
-        [props.promptstate["lowerCase"], caseCharacters],
-        [props.promptstate["numbers"], numbers],
+        [context[0]["specialCharacters"], specialCharacters],
+        [context[0]["upperCase"], upperCharacters],
+        [context[0]["lowerCase"], caseCharacters],
+        [context[0]["numbers"], numbers],
       ]);
     }
   };
 
   const buttonColor = () => {
-    return props.promptstate.length >= 8 &&
-      props.promptstate.length <= 128 &&
-      (props.promptstate["specialCharacters"] ||
-        props.promptstate["upperCase"] ||
-        props.promptstate["lowerCase"] ||
-        props.promptstate["numbers"])
+    return context[0]["length"] >= 8 &&
+      context[0]["length"] <= 128 &&
+      (context[0]["specialCharacters"] ||
+        context[0]["upperCase"] ||
+        context[0]["lowerCase"] ||
+        context[0]["numbers"])
       ? {
           backgroundColor:
-            props.back["background"] === "dark"
+            context[2]["background"] === "dark"
               ? "#008b10"
-              : props.back["background"] === "light"
+              : context[2]["background"] === "light"
               ? "black"
               : "#de6161",
           borderColor:
-            props.back["background"] === "dark"
+            context[2]["background"] === "dark"
               ? "#008b10"
-              : props.back["background"] === "light"
+              : context[2]["background"] === "light"
               ? "black"
               : "#de6161",
         }
@@ -228,7 +231,7 @@ const PromptModal = (props) => {
   };
 
   const backgroundColor = () => {
-    return props.back["background"] === "dark"
+    return context[2]["background"] === "dark"
       ? {
           backgroundColor: "#1F1F1F",
           borderBottom: "1px solid #1a1a1a",
@@ -249,13 +252,13 @@ const PromptModal = (props) => {
         <h4
           style={{
             textShadow:
-              props.back["background"] === "dark"
+              context[2]["background"] === "dark"
                 ? "2px 3px 4px black"
                 : "2px 3px 4px lightgray",
             color:
-              props.back["background"] === "dark"
+              context[2]["background"] === "dark"
                 ? "#008b10"
-                : props.back["background"] === "light"
+                : context[2]["background"] === "light"
                 ? "black"
                 : "#DE6161",
           }}
@@ -265,11 +268,8 @@ const PromptModal = (props) => {
       </Modal.Header>
       <Modal.Body style={backgroundColor()}>
         <Prompt
-          promptstate={props.promptstate}
-          setpromptstate={props.setpromptstate}
           validation={validation}
           setValidationState={setValidationState}
-          back={props.back}
         />
       </Modal.Body>
       <Modal.Footer style={backgroundColor()}>
